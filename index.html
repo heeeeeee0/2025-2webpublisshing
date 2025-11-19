@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>내가 좋아하는 음식 - 마라탕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Figma에서 추출한 것처럼 쓴다고 가정해서 색, 폰트는 CSS 변수로 관리 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 접근성: 시맨틱 구조 + h1 한 번만 사용 -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <h1 class="site-header__logo">내가 좋아하는 음식 - 마라탕</h1>
+
+      <nav class="nav" aria-label="주요 메뉴">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="#intro">홈</a></li>
+          <li class="nav__item"><a class="nav__link" href="#what-is">마라탕이란?</a></li>
+          <li class="nav__item"><a class="nav__link" href="#ingredients">재료</a></li>
+          <li class="nav__item"><a class="nav__link" href="#franchise">프랜차이즈</a></li>
+          <li class="nav__item"><a class="nav__link" href="#why-love">좋아하는 이유</a></li>
+          <li class="nav__item"><a class="nav__link" href="#gallery">사진</a></li>
+          <li class="nav__item"><a class="nav__link" href="#feedback">추천 남기기</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" aria-label="메뉴 열기 / 닫기">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- setTimeout: 일정 시간 뒤에 나타나는 배너 -->
+  <div id="notifyBanner" class="notify-banner" aria-live="polite">
+    <p class="notify-banner__text">오늘 마라탕 한 그릇 어때요? 🍲</p>
+    <button id="bannerCloseBtn" class="notify-banner__close" type="button" aria-label="배너 닫기">×</button>
+  </div>
+
+  <main class="site-main">
+    <!-- 메인 비주얼 / 인트로 -->
+    <section id="intro" class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <h2 class="hero__title">얼얼하지만 중독적인 맛, 마라탕</h2>
+          <p class="hero__desc">
+            중국 쓰촨 지방에서 온 매운 국물 요리, <strong>마라탕</strong>을 소개합니다.<br>
+            혀가 얼얼한 <b>마(麻)</b>와 화끈한 <b>라(辣)</b>의 만남!
+          </p>
+
+          <!-- Flexbox: 한 줄에 버튼 정렬 (L1) -->
+          <div class="hero__button-row">
+            <a href="#what-is" class="btn-primary">마라탕이란?</a>
+            <a href="#ingredients" class="btn-secondary">재료 보기</a>
+            <a href="#franchise" class="btn-secondary">프랜차이즈</a>
+          </div>
+        </div>
+
+        <!-- 이미지 + alt (A3) -->
+        <figure class="hero__image">
+          <img
+            src="https://via.placeholder.com/420x260?text=Malatang"
+            alt="얼얼한 국물의 마라탕 한 그릇"
+            class="hero__img"
+          >
+          <figcaption class="hero__caption">따끈한 마라탕 이미지 (임시 이미지, 나중에 교체 가능)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 마라탕이란? -->
+    <section id="what-is" class="section">
+      <div class="container">
+        <h2 class="section__title">마라탕이란?</h2>
+        <p class="section__subtitle">
+          마라탕의 유래와 이름의 의미를 알아보자.
+        </p>
+
+        <!-- Grid 2차원 배치 (L2) -->
+        <div class="grid grid--two-cols">
+          <article class="section__box">
+            <h3 class="section__box-title">마라탕의 유래</h3>
+            <p>
+              마라탕은 중국 <strong>쓰촨 지방</strong>에서 시작된 요리로 알려져 있어요.
+              추운 날 따뜻한 국물에 매운 향신료를 넣어 먹기 위해 만들어졌다는 이야기가 있습니다.
+            </p>
+          </article>
+
+          <article class="section__box">
+            <h3 class="section__box-title">이름의 의미</h3>
+            <ul class="info-list">
+              <li><b>麻(마)</b> : 혀가 얼얼한 느낌을 주는 산초의 맛</li>
+              <li><b>辣(라)</b> : 고추에서 오는 매운맛</li>
+              <li><b>烫(탕)</b> : 뜨거운 국물 요리</li>
+            </ul>
+            <p>
+              그래서 마라탕은 곧 <strong>“얼얼하고 매운 뜨거운 탕”</strong>이라는 뜻을 가지고 있어요.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 재료 섹션 -->
+    <section id="ingredients" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">마라탕에 들어가는 재료</h2>
+        <p class="section__subtitle">
+          마라탕의 매력 포인트 중 하나, 바로 <strong>내가 고르는 재료</strong>!
+        </p>
+
+        <!-- Grid 3단 → 2단 → 1단 반응형 (L2, L3) -->
+        <div class="grid grid--three-cols cards">
+          <article class="card">
+            <h3 class="card__title">기본 재료</h3>
+            <ul>
+              <li>배추, 청경채</li>
+              <li>각종 버섯류(목이버섯, 팽이 등)</li>
+              <li>두부, 유부</li>
+              <li>당면, 분모자</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">고기 & 해산물</h3>
+            <ul>
+              <li>소고기, 우삼겹</li>
+              <li>양고기</li>
+              <li>새우, 오징어 등 해산물</li>
+              <li>햄, 소시지, 어묵류</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">소스 & 향신료</h3>
+            <ul>
+              <li>마라 소스, 고추기름</li>
+              <li>화자오(산초), 건고추</li>
+              <li>마늘, 파, 생강</li>
+              <li>참깨 소스, 간장 등</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="tip-box">
+          <strong>TIP.</strong> 너무 기름지게 느껴진다면 채소를 많이 넣고, 고기/어묵은 적당히만!
+        </div>
+      </div>
+    </section>
+
+    <!-- 프랜차이즈 소개 -->
+    <section id="franchise" class="section">
+      <div class="container">
+        <h2 class="section__title">마라탕 프랜차이즈 & 맛 차이</h2>
+        <p class="section__subtitle">
+          브랜드마다 국물의 진하기, 매운맛, 향신료의 세기가 조금씩 달라요.
+        </p>
+
+        <div class="franchise-list">
+          <article class="franchise-card">
+            <h3 class="franchise-card__title">하이디라오</h3>
+            <p class="franchise-card__tagline">국물 진하고 서비스 좋은 프리미엄 마라탕</p>
+            <ul>
+              <li>국물 맛이 깊고 진함</li>
+              <li>서비스와 분위기가 좋은 편</li>
+              <li>가격대가 조금 높은 편</li>
+            </ul>
+          </article>
+
+          <article class="franchise-card">
+            <h3 class="franchise-card__title">마라공방</h3>
+            <p class="franchise-card__tagline">한국인 입맛에 맞춘 균형 잡힌 매운맛</p>
+            <ul>
+              <li>향신료가 너무 세지 않음</li>
+              <li>토핑 종류가 다양함</li>
+              <li>깔끔한 국물 스타일</li>
+            </ul>
+          </article>
+
+          <article class="franchise-card">
+            <h3 class="franchise-card__title">탕화쿵푸</h3>
+            <p class="franchise-card__tagline">현지 감성의 강한 마라 향</p>
+            <ul>
+              <li>향신료 맛이 강한 편</li>
+              <li>“진짜 중국 스타일” 느낌</li>
+              <li>호불호가 갈릴 수 있음</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="note">
+          ※ 실제 지점마다 맛이 조금씩 다를 수 있어요. 직접 먹어보고
+          <strong>나만의 원픽 마라탕 집</strong>을 찾아보는 것도 재미!
+        </p>
+      </div>
+    </section>
+
+    <!-- 내가 좋아하는 이유 -->
+    <section id="why-love" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">내가 마라탕을 좋아하는 이유</h2>
+
+        <div class="grid grid--two-cols">
+          <div>
+            <ul class="reason-list">
+              <li>스트레스 받을 때 얼얼한 국물이 기분을 확 풀어준다.</li>
+              <li>내가 먹고 싶은 재료를 골라 넣는 재미가 있다.</li>
+              <li>친구들이랑 같이 가서 서로 다른 재료를 나눠 먹는 재미!</li>
+              <li>매운맛 단계 조절이 가능해서 기분 따라, 컨디션 따라 조절하기 좋다.</li>
+            </ul>
+          </div>
+
+          <div class="placeholder placeholder--center">
+            <span>여기에 내가 찍은 마라탕 사진 / 셀카 넣기</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 사진 갤러리 -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2 class="section__title">마라탕 사진 모음</h2>
+        <p class="section__subtitle">내가 다녀온 마라탕 집, 먹었던 마라탕들을 사진으로 기록!</p>
+
+        <div class="grid grid--three-cols gallery">
+          <!-- 나중에 img 태그로 교체 가능 -->
+          <div class="gallery__item placeholder"><span>사진 1</span></div>
+          <div class="gallery__item placeholder"><span>사진 2</span></div>
+          <div class="gallery__item placeholder"><span>사진 3</span></div>
+          <div class="gallery__item placeholder"><span>사진 4</span></div>
+          <div class="gallery__item placeholder"><span>사진 5</span></div>
+          <div class="gallery__item placeholder"><span>사진 6</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- setInterval / clearInterval: 자동 문장 + 멈춤 -->
+    <section id="quotes" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">마라탕 한 줄 평</h2>
+        <p class="section__subtitle">3초마다 자동으로 바뀌는 문장 (U5, U6)</p>
+
+        <div class="quote-rotator">
+          <p id="quoteText" class="quote-rotator__text">
+            마라탕은 국물의 예술이다.
+          </p>
+          <div class="quote-rotator__buttons">
+            <button type="button" id="quotePauseBtn" class="btn-secondary">멈추기</button>
+            <button type="button" id="quoteResumeBtn" class="btn-secondary">다시 시작</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form + 유효성 검사 -->
+    <section id="feedback" class="section">
+      <div class="container">
+        <h2 class="section__title">마라탕 추천 남기기</h2>
+        <p class="section__subtitle">좋아하는 마라탕 가게를 추천해 주세요! (U7)</p>
+
+        <form id="feedbackForm" class="form" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="nameInput">이름</label>
+            <input class="form__input" type="text" id="nameInput" name="name" required>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="storeInput">추천 마라탕 가게 이름</label>
+            <input class="form__input" type="text" id="storeInput" name="store" required>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="messageInput">추천 이유</label>
+            <textarea class="form__input form__textarea" id="messageInput" name="message" rows="4" required></textarea>
+          </div>
+
+          <button class="btn-primary form__submit" type="submit">보내기</button>
+          <p id="formMessage" class="form__message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- fetch API + async/await + JSON + DOM 생성 + Error 처리 -->
+    <section id="api" class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">외부 데이터 예시</h2>
+        <p class="section__subtitle">
+          fetch API로 JSON 데이터를 가져와 화면에 출력합니다. (D1~D5)
+        </p>
+
+        <div id="apiData" class="api-data">
+          <p class="api-data__loading">데이터 불러오는 중...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 맨 아래 푸터 -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© 2025 내가 좋아하는 음식 - 마라탕</p>
+      <a href="#intro" class="back-to-top">↑ 맨 위로</a>
+    </div>
+  </footer>
+
+  <!-- 위로 올라가기 버튼 -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="맨 위로 이동">
+    ↑
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
